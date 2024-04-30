@@ -54,9 +54,9 @@
       <div id="dropdown-menu" class="oculto"></div>
     </header>
     <div class="tab">
-    <h1>Top 5</h1>
+      <h1>Top 5</h1>
 
-    <table class="cl">
+     <table class="cl">
       <tr>
         <td textalign="" class="color">Placar</td>
         <td class="color">Movimentos</td>
@@ -66,12 +66,12 @@
       <td class="ama">PRIMEIRO</td>
       <td class="bg">01</td>
       <td class="bg">1:00</td>
-      <td class="bg">#AAA</td>
+      <td class="bg">Ythalo</td>
       <tr>
         <td class="ama">SEGUNDO</td>
         <td class="bg">02</td>
         <td class="bg">2:00</td>
-        <td class="bg">#BBB</td>
+        <td class="bg" id="nameCell">#BBB</td>
       </tr>
 
       <tr>
@@ -96,19 +96,29 @@
       </tr>
    
 
-    </table>
+     </table>
+
+    <script>
+      // Recuperar o nome armazenado em localStorage
+      var userName = localStorage.getItem('userName');
+      
+      // Atualizar o conteúdo da célula com o nome do usuário
+      document.write(userName);
+    </script>
+
   </div>
-  </body>
-  <footer>
-    <nav class="rodap">
-      <a href="/" class="rodap" id="emp">HOME</a>
-      <a href="/game" class="rodap">GAME </a>
-      <a href="/table" class="rodap" id="rest">TABELA</a>
-    </nav>
-    <hr />
-    <p class="rod">Brasil</p>
-    <p class="rod">Política de privacidade</p>
-    <p class="rod">Termos de Uso</p>
-    <p class="dir">&copy;2024 <i>Todos os direitos reservados.</i></p>
-</footer>
+  
+   <footer>
+     <nav class="rodap">
+       <a href="/" class="rodap" id="emp">HOME</a>
+       <a href="/game" class="rodap">GAME </a>
+       <a href="/table" class="rodap" id="rest">TABELA</a>
+     </nav>
+     <hr />
+     <p class="rod">Brasil</p>
+     <p class="rod">Política de privacidade</p>
+     <p class="rod">Termos de Uso</p>
+     <p class="dir">&copy;2024 <i>Todos os direitos reservados.</i></p>
+   </footer>
+</body>
 </html>
