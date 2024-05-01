@@ -87,10 +87,21 @@
 
       function endgame(){
         if(towers[2].length === 5){
-          alert("Parabens! Você terminou o jogo!");
-          movimentos = contador;
+          $.ajax({
+            url: 'http://localhost:5000/endgame',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({towers: towers}),
+            success: function(response) {
+            alert(response.message);
+            movimentos = contador;
+        },
+        error: function(xhr, status, error) {
+            console.error('Erro:', error);
           }
-    }
+         }
+        }
+      }
 
       setInterval(() => {
           if(movements.length && movements[movements.length-1].length == 2){
