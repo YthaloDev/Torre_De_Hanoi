@@ -36,6 +36,8 @@
     <input type="number" id="numero" name="numero" min="1" required />    
     <button type="submit">Iniciar Simulação</button></p>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
       let towers = [[5,4,3,2,1],[],[]];
       let positions = ['p1', 'p2', 'p3', 'p4', 'p5', 'p0', 't1', 't2', 't3'];
@@ -86,21 +88,22 @@
       }
 
       function endgame(){
-        if(towers[2].length === 5){
+        if (towers[2].length === 5) {
+          alert("Aoh lasqueira");
           $.ajax({
-            url: 'http://localhost:5000/endgame',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({towers: towers}),
-            success: function(response) {
-            alert(response.message);
-            movimentos = contador;
-        },
-        error: function(xhr, status, error) {
-            console.error('Erro:', error);
+          url: 'http://localhost:5000/endgame',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ towers: towers }),
+          success: function (response) {
+              alert(response.message);
+              movimentos = contador;
+          },
+          error: function (xhr, status, error) {
+              console.error('Erro:', error);
           }
-         }
-        }
+      });
+  }
       }
 
       setInterval(() => {

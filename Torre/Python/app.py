@@ -3,8 +3,9 @@ from flask import Flask, render_template, request, jsonify
 import tkinter
 from tkinter import *
 from tkinter import ttk
+from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app)
 
 #Configuração do jogo
 def torrehanoi(numero, inicio, auxiliar, fim):
@@ -72,6 +73,11 @@ def endgame():
         ttk.Button(frame, text="Somar", command=somar).pack(side=tkinter.RIGHT, padx=10)
 
         janela.mainloop()
+
+        return jsonify({'message': 'O jogo foi concluído com sucesso!'})
+    
+    return jsonify({'error': 'Condição não atendida'})
+
 
 
 #Inicia o servidor! Debug fica ativo para atualizar o site assim que mudar algo do codigo 
