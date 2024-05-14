@@ -65,6 +65,7 @@
       }
 
       let contador = 0;
+      let id = 0;
 
       function move(fromtower, totower){
           if(!towers[fromtower].length) return;
@@ -241,8 +242,10 @@ console.log(BancoDados_Tabela.tempo);
             // Faça algo com a variável
             console.log("O Nome do usuário é: " + minhaNome);
             console.log("O n° de movimentos é: " + minhaMovimento);
+            
+            id = id + 1;
             // Redirecionar para a segunda página com os valores como parâmetros de consulta
-            window.location.href = "/table?nome=" + encodeURIComponent(valorNome) + "&movimentos=" + encodeURIComponent(valorMovimento);
+            window.location.href = "/table?nome=" + encodeURIComponent(valorNome) + "&movimentos=" + encodeURIComponent(valorMovimento) + "&id=" + encodeURIComponent(id);
 }
 
     </script>

@@ -97,6 +97,7 @@
         var parametros = obterParametrosURL();
         var nomeUsuario = parametros.nome;
         var movimentos = parametros.movimentos;
+        var id = parametros.id;
 
         // Criar uma nova linha na tabela
         var tabela = document.getElementById("tabela");
@@ -111,6 +112,7 @@
         // Preencher as células com os valores do nome de usuário e movimentos
         cell1.innerHTML = nomeUsuario;
         cell2.innerHTML = movimentos;
+        cell4.innerHTML = id;
         // Você pode preencher as outras células conforme necessário
 
         // Adicionar mais estilos ou funcionalidades conforme necessário
