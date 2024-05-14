@@ -32,11 +32,19 @@
     </header>
     <div class="titulobox"><h1 class="textotitulo">Torre de Hanoi</h1></div>
     <form method="POST" class="banana">
-    <p class="subtitulo"><label for="numero">Número de discos:</label>
-    <input type="number" id="numero" name="numero" min="1" required />    
-    <button type="submit">Iniciar Simulação</button></p>
+    <p class="subtitulo" ><label for="numero" id = "titulonumero">Número de discos:</label>
+    <input type="number" id="numero" name="numero"/>    
+    <button type="submit" id="butaonumero" >Iniciar Simulação</button></p>
+    <div class="subtitulodados"><label for="tabelausuario" id = "titulousuario">Usuário</label></div>
+    <input name='CriaCampoNome' placeholder='Digite o nome de usuário' class= "dados" id ="tabelausuario" name ="tabelausuario" />
+    <div class="subtitulodados"><label for="tabelamovimento" id = "titulomovimento">Movimento</label></div>
+    <input name='CriaCampoMovimento' placeholder='Número de movimentos' class = "dados" id="tabelamovimento" name ="tabelamovimento" />
+    <button type="button" class = "dados" id="tabelabutao" onclick = obterValorInput() >Enviar</button>
+    <button type="button" class = "dados" id="reiniciarjogo" onclick = reiniciarGame() >Reiniciar Jogo</button>
+  
+  <ul class="listaDaTabela">
+  </ul>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
       let towers = [[5,4,3,2,1],[],[]];
@@ -88,23 +96,99 @@
       }
 
       function endgame(){
-        if (towers[2].length === 5) {
-          alert("Aoh lasqueira");
-          $.ajax({
-          url: 'http://localhost:5000/endgame',
-          type: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify({ towers: towers }),
-          success: function (response) {
-              alert(response.message);
-              movimentos = contador;
-          },
-          error: function (xhr, status, error) {
-              console.error('Erro:', error);
-          }
-      });
-  }
+        if(towers[2].length === 5){
+
+          document.getElementById("numero").style.display = "none";
+          document.getElementById("tabelausuario").style.display = "block";
+          document.getElementById("butaonumero").style.display = "none";
+          document.getElementById("titulonumero").style.display = "none";
+          document.getElementById("tabelamovimento").style.display = "block";
+          document.getElementById("tabelabutao").style.display = "block";
+          document.getElementById("reiniciarjogo").style.display = "block";
+          document.getElementById("titulousuario").style.display = "block";
+          document.getElementById("titulomovimento").style.display = "block";
+
+          movimentos = contador;
+          alert("Parabéns! Você completou o jogo!\nN° Movimentos: " + movimentos);
+
+//criando crud para ver se funciona
+// Banco de Dados
+const BancoDados_Tabela = {
+    usuario: [
+      {
+        username: 'nome',
       }
+    ],
+    tempo: [
+      {
+        id: 1,
+        owner: 'nomeTeste',
+        time: '1:00T',
+        moviments: 32
+      }
+    ],
+    criaraking(dados){
+     BancoDados_Tabela.tempo.push({
+        id: BancoDados_Tabela.tempo.length + 1,
+        owner: dados.owner,
+        time: dados.time,
+        moviments: dados.moviments
+  });
+}
+};
+
+BancoDados_Tabela.criaraking({owner: "Neyverson", time: '2:21', moviments: movimentos});
+
+
+// [Códigos de front end: web]
+const $meuForm = document.querySelector('form');
+
+$meuForm.addEventListener('submit', function criaTabelaController(infosDoEvento){
+    infosDoEvento.defaultPrevented();
+    console.log("Está começando o terminal");
+    const $CriaCampoNome = document.querySelector('input[name="CriaCampoNome"]');
+    const $CriaCampoMovimento = document.querySelector('input[name="CriaCampoMovimento"]');
+    const $listaDaTabela = document.querySelector('.listaDaTabela');
+
+    $listaDaTabela.insertAdjacentElement('afterbegin', `<li>${$CriaCampoNome.value}</li>`);
+    $listaDaTabela.insertAdjacentElement('afterbegin', `<li>${$CriaCampoMovimento.value}</li>`);
+    $CriaCampoNome = '';
+    $CriaCampoMovimento = '';
+
+})
+// Pegando os dados do raking
+
+function pegaranking(){
+  return BancoDados_Tabela.tempo;
+};
+
+// Atualizando dados da tabela
+function AtualizaTabela(id, usuarioN, tempoN, movimenntosN){
+  const TabelaAtualizada = pegaranking().find((tempo) => {
+        return tempo.id === id;
+  })
+  console.log(TabelaAtualizada)
+  TabelaAtualizada.owner = usuarioN;
+  TabelaAtualizada.tempo = tempoN;
+  TabelaAtualizada.moviments = movimenntosN;
+};
+
+// Deletar dados da tabela
+
+function DeletaTabela(){
+  const TabelaTempoReal = pegaranking().filter((DadosAtual) => {
+    return DadosAtual.id !== id;
+})
+  BancoDados_Tabela.tempo = TabelaTempoReal;
+};
+
+console.log(BancoDados_Tabela.tempo);
+          }
+    }
+
+    function liberarform(){
+
+    }
 
       setInterval(() => {
           if(movements.length && movements[movements.length-1].length == 2){
@@ -118,6 +202,49 @@
               clicktower(index);
           });
       });
+
+      function reiniciarGame(){
+        // Reinicie as variáveis ​​que controlam o estado do jogo para seus valores iniciais
+        towers = [[5,4,3,2,1],[],[]]; // Reinicie as torres com os discos na configuração inicial
+        movements = []; // Limpe a lista de movimentos
+        contador = 0; // Reinicie o contador de movimentos
+        render(); // Renderize o estado inicial do jogo
+        // Limpe os campos de entrada de nome de usuário e movimentos
+        document.getElementById("tabelausuario").value = "";
+        document.getElementById("tabelamovimento").value = "";
+        document.getElementById("tabelausuario").value = "none";
+        document.getElementById("tabelamovimento").value = "none";
+        document.getElementById("numero").style.display = "block";
+        document.getElementById("tabelausuario").style.display = "none";
+        document.getElementById("butaonumero").style.display = "block";
+        document.getElementById("titulonumero").style.display = "block";
+        document.getElementById("tabelamovimento").style.display = "none";
+        document.getElementById("tabelabutao").style.display = "none";
+        document.getElementById("reiniciarjogo").style.display = "none";
+        document.getElementById("titulousuario").style.display = "none";
+        document.getElementById("titulomovimento").style.display = "none";
+      }
+
+      function obterValorInput() {
+            // Obtenha o elemento de input pelo ID
+            var inputUsuario = document.getElementById("tabelausuario");
+            var inputMovimento = document.getElementById("tabelamovimento");
+            
+            // Obtenha o valor do input
+            var valorNome = inputUsuario.value;
+            var valorMovimento = inputMovimento.value;
+            
+            // Atribua o valor a uma variável
+            var minhaNome = valorNome;
+            var minhaMovimento = valorMovimento;
+            
+            // Faça algo com a variável
+            console.log("O Nome do usuário é: " + minhaNome);
+            console.log("O n° de movimentos é: " + minhaMovimento);
+            // Redirecionar para a segunda página com os valores como parâmetros de consulta
+            window.location.href = "/table?nome=" + encodeURIComponent(valorNome) + "&movimentos=" + encodeURIComponent(valorMovimento);
+}
+
     </script>
 
     <div class="hanoi">

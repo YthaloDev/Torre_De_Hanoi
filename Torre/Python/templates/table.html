@@ -10,8 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Kavoon&family=Madimi+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Burned&display=swap"
       rel="stylesheet"
     />
- 
 </html>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -56,69 +56,67 @@
     <div class="tab">
       <h1>Top 5</h1>
 
-     <table class="cl">
-      <tr>
-        <td textalign="" class="color">Placar</td>
-        <td class="color">Movimentos</td>
-        <td class="color">Tempo</td>
-        <td class="color">#ID</td>
-      </tr>
-      <td class="ama">PRIMEIRO</td>
-      <td class="bg">01</td>
-      <td class="bg">1:00</td>
-      <td class="bg">Ythalo</td>
-      <tr>
-        <td class="ama">SEGUNDO</td>
-        <td class="bg">02</td>
-        <td class="bg">2:00</td>
-        <td class="bg" id="nameCell">#BBB</td>
-      </tr>
+      <table class="cl" id="tabela">
+       <tr>
+           <td textalign="" class="color">Placar</td>
+           <td class="color">Movimentos</td>
+           <td class="color">Tempo</td>
+            <td class="color">#ID</td>
+        </tr>
+        <!-- Linhas da tabela serão adicionadas dinamicamente aqui -->
+      </table>
+    </div>
 
-      <tr>
-        <td class="ama">TERCEIRO</td>
-        <td class="bg">03</td>
-        <td class="bg">3:00</td>
-        <td class="bg">#CCC</td>
-      </tr>
+  <footer>
+    <nav class="rodap">
+        <a href="/" class="rodap" id="emp">HOME</a>
+        <a href="/game" class="rodap">GAME </a>
+        <a href="/table" class="rodap" id="rest">TABELA</a>
+    </nav>
+    <hr />
+    <p class="rod">Brasil</p>
+    <p class="rod">Política de privacidade</p>
+    <p class="rod">Termos de Uso</p>
+    <p class="dir">&copy;2024 <i>Todos os direitos reservados.</i></p>
+  </footer> 
 
-      <tr>
-        <td class="ama">QUARTO</td>
-        <td class="bg">04</td>
-        <td class="bg">4:00</td>
-        <td class="bg">#DDD</td>
-      </tr>
+  <script>
+    // Função para obter os parâmetros de consulta da URL
+    function obterParametrosURL() {
+        var parametros = {};
+        var url = window.location.search.substring(1).split("&");
+        for (var i = 0; i < url.length; i++) {
+            var parametro = url[i].split("=");
+            parametros[parametro[0]] = decodeURIComponent(parametro[1]);
+        }
+        return parametros;
+    }
 
-      <tr>
-        <td class="ama">QUINTO</td>
-        <td class="bg">05</td>
-        <td class="bg">5:00</td>
-        <td class="bg">#EEE</td>
-      </tr>
-   
+    // Função para adicionar uma linha à tabela com o nome de usuário e o número de movimentos
+    function adicionarLinhaTabela() {
+        var parametros = obterParametrosURL();
+        var nomeUsuario = parametros.nome;
+        var movimentos = parametros.movimentos;
 
-     </table>
+        // Criar uma nova linha na tabela
+        var tabela = document.getElementById("tabela");
+        var newRow = tabela.insertRow();
 
-    <script>
-      // Recuperar o nome armazenado em localStorage
-      var userName = localStorage.getItem('userName');
-      
-      // Atualizar o conteúdo da célula com o nome do usuário
-      document.write(userName);
-    </script>
+        // Criar as células da nova linha
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
 
-  </div>
-  
-   <footer>
-     <nav class="rodap">
-       <a href="/" class="rodap" id="emp">HOME</a>
-       <a href="/game" class="rodap">GAME </a>
-       <a href="/table" class="rodap" id="rest">TABELA</a>
-     </nav>
-     <hr />
-     <p class="rod">Brasil</p>
-     <p class="rod">Política de privacidade</p>
-     <p class="rod">Termos de Uso</p>
-     <p class="dir">&copy;2024 <i>Todos os direitos reservados.</i></p>
-   </footer>
-</body>
-</html>
+        // Preencher as células com os valores do nome de usuário e movimentos
+        cell1.innerHTML = nomeUsuario;
+        cell2.innerHTML = movimentos;
+        // Você pode preencher as outras células conforme necessário
+
+        // Adicionar mais estilos ou funcionalidades conforme necessário
+    }
+
+    // Adicionar a linha à tabela ao carregar a página
+    window.onload = adicionarLinhaTabela;
+  </script>
+  </body>
