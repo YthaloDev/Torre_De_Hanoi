@@ -1,30 +1,37 @@
-#Aqui inportamos a biblioteca flask que ajuda-nos a trabalhar com web
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session
-from flask_cors import CORS
+# Aqui inportamos a biblioteca flask que ajuda-nos a trabalhar com web
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 app = Flask(__name__)
-CORS(app)
 
-#Configuração do jogo
+# Configuração do jogo
+
+
 def torrehanoi(numero, inicio, auxiliar, fim):
     if numero == 1:
         return [('Muda o disco 1 da coluna {} para a coluna {}'.format(inicio, fim))]
     else:
         passos = torrehanoi(numero - 1, inicio, fim, auxiliar)
-        passos.append('Muda o disco {} da coluna {} para a coluna {} \n'.format(numero, inicio, fim))
+        passos.append('Muda o disco {} da coluna {} para a coluna {} \n'.format(
+            numero, inicio, fim))
         passos.extend(torrehanoi(numero - 1, auxiliar, inicio, fim))
         return passos
 
-#Rota da pagina inicial
+# Rota da pagina inicial
+
+
 @app.route('/')
 def home():
     return render_template('home.html')
 
-#Rota da pagina integrantes
-@app.route('/integrantes')
-def integrantes():
+# Rota da pagina integrantes
+
+
+@app.route('/img')
+def img():
     return render_template('img.html')
 
-#Rota da pagina do jogo
+# Rota da pagina do jogo
+
+
 @app.route('/game', methods=['GET', 'POST'])
 def game():
     if request.method == 'POST':
@@ -33,7 +40,9 @@ def game():
         return render_template('game.html', passos=passos)
     return render_template('game.html', passos=None)
 
-#Rota da pagina da tabela
+# Rota da pagina da tabela
+
+
 @app.route('/table', methods=['GET'])
 def table():
     # Aqui você pode adicionar código para mostrar uma tabela, se necessário(vamos usar futuramente)
@@ -42,6 +51,7 @@ def table():
 
     # Render the 'table.html' page with the necessary data
     return render_template('table.html', nome=nome, movimentos=movimentos)
+
 
 @app.route('/game', methods=['POST'])
 def handle_game_submission():
@@ -56,6 +66,6 @@ def handle_game_submission():
     return redirect(url_for('table', nome=nome, movimentos=movimentos))
 
 
-#Inicia o servidor! Debug fica ativo para atualizar o site assim que mudar algo do codigo 
+# Inicia o servidor! Debug fica ativo para atualizar o site assim que mudar algo do codigo
 if __name__ == '__main__':
-    app.run(debug=True)#-> Debug
+    app.run(debug=True)  # -> Debug

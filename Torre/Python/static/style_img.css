@@ -1,0 +1,259 @@
+@charset "UTF-8";
+
+* {
+    font-family: "Kavoon", serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    background-color: #FFFFC7 ;
+}
+
+h1 {
+    text-align: center;
+    margin-left: 25vw;
+    font-size: 6vw;
+    font-weight: 700;
+    line-height: 5vw;
+    letter-spacing: 0.5vw;
+    width: 40vw;
+    height: 7vw;
+    color: #473335;
+}
+
+h2 {
+    text-align: center;
+    position: relative;
+    top: -10vw;
+    font-size: 5vw;
+}
+
+main {
+    background-color:#548687;
+    padding: 10vw;
+    margin: 10vw;
+    border-radius: 10vw;
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0, 0.384);
+    position: relative;
+    top: -10vw;
+    height: 42vw;
+}
+
+.Ariel {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #473335 8px solid;
+    position: relative;
+    top: -9vw;
+}
+
+.am {
+    position: relative;
+    top: -10vw;
+}
+
+.Icaro{
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #B0413E 8px solid;
+    left: 20vw;
+    position: relative;
+    top: -20vw;
+}
+
+.im {
+    position: relative;
+    top: -22vw;
+    left: 20vw;
+}
+
+.Marcelo {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #FCAA67 8px solid;
+    left:43vw;
+    position: relative;
+    top: -31vw;
+}
+
+.mm {
+position: relative;
+top: -33vw;
+left: 66%;
+}
+
+.Gabriel {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw; 
+    border: #548687 8px solid; 
+    top: -30vw;
+    position: relative;
+}
+
+.gm {
+    position: relative;
+    top: -31vw;
+}
+
+.Matheus {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #473335 8px solid; 
+    position: relative;
+    top: -41vw;
+    left: 20vw;
+}
+
+.thm {
+    position: relative;
+    top: -42vw;
+    left: 19vw;
+}
+
+.Luca {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #FFFFC7 8px solid;
+    position: relative;
+    top: -52vw;
+    left: 42vw;
+}
+
+.lm {
+    position: relative;
+    top: -54vw;
+    left: 40vw;
+}
+
+.Ythallo {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #FFFFC7 8px solid;
+    position: relative;
+    top: -9vw;
+}
+
+.ym {
+position: relative;
+top: -10vw;
+left: 2vw;
+}
+
+.matheusramos {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #473335 8px solid;
+    position: relative;
+    top: -20vw; 
+    left: 20vw;
+}
+
+.mr {
+    position: relative;
+top: -21vw;
+left: 20vw;
+}
+
+.ney {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #548687 8px solid;
+    position: relative;
+    top: -31vw; 
+    left: 45vw;
+}
+
+.nm {
+    position: relative;
+    top: -33vw;
+    left: 46vw;
+}
+
+
+.gfm {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #FCAA67 8px solid;
+    position: relative;
+    top: -27vw; 
+    left: 45vw; 
+}
+
+.gf{
+    position: relative;
+    top: -27vw;
+    left: 46vw;
+}
+
+.cm {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #B0413E 8px solid;
+    position: relative;
+    top: -38vw; 
+    left: 20vw;  
+}
+
+.cp{
+    position: relative;
+    top: -39vw;
+    left: 20vw;
+}
+
+.phm {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+    border: #473335 8px solid;
+    position: relative;
+    top: -50vw;
+}
+
+.ph{
+    position: relative;
+top: -50vw;
+left: 0vw;
+}
+
+.mestre {
+    position: relative;
+    top: -70vw;
+    left: -8vw;
+}
+
+.mg {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-left: -8vw;
+    border: #FCAA67  8px solid;
+    position: relative;
+    top: -70vw;
+}
