@@ -40,6 +40,7 @@
     <div class="subtitulodados"><label for="tabelamovimento" id = "titulomovimento">Movimento</label></div>
     <input name='CriaCampoMovimento' placeholder='Número de movimentos' class = "dados" id="tabelamovimento" name ="tabelamovimento" />
     <button type="button" class = "dados" id="tabelabutao" onclick = obterValorInput() >Enviar</button>
+    <button type="button" class = "dados" id="tabelaenviar" onclick = enviarTabela() >EnviarTabela</button>
     <button type="button" class = "dados" id="reiniciarjogo" onclick = reiniciarGame() >Reiniciar Jogo</button>
   
   <ul class="listaDaTabela">
@@ -105,6 +106,7 @@
           document.getElementById("titulonumero").style.display = "none";
           document.getElementById("tabelamovimento").style.display = "block";
           document.getElementById("tabelabutao").style.display = "block";
+          document.getElementById("tabelaenviar").style.display = "block";
           document.getElementById("reiniciarjogo").style.display = "block";
           document.getElementById("titulousuario").style.display = "block";
           document.getElementById("titulomovimento").style.display = "block";
@@ -224,6 +226,7 @@ console.log(BancoDados_Tabela.tempo);
         document.getElementById("reiniciarjogo").style.display = "none";
         document.getElementById("titulousuario").style.display = "none";
         document.getElementById("titulomovimento").style.display = "none";
+        document.getElementById("tabelaenviar").style.display = "none";
       }
 
       function obterValorInput() {
@@ -242,11 +245,32 @@ console.log(BancoDados_Tabela.tempo);
             // Faça algo com a variável
             console.log("O Nome do usuário é: " + minhaNome);
             console.log("O n° de movimentos é: " + minhaMovimento);
-            
-            id = id + 1;
-            // Redirecionar para a segunda página com os valores como parâmetros de consulta
-            window.location.href = "/table?nome=" + encodeURIComponent(valorNome) + "&movimentos=" + encodeURIComponent(valorMovimento) + "&id=" + encodeURIComponent(id);
+                  
 }
+
+      function enviarTabela() {
+          var inputUsuario = document.getElementById("tabelausuario");
+          var inputMovimento = document.getElementById("tabelamovimento");
+
+          // Obtenha o valor do input
+          var valorNome = inputUsuario.value;
+          var valorMovimento = inputMovimento.value;
+
+          // Atribua o valor a uma variável
+          var minhaNome = valorNome;
+          var minhaMovimento = valorMovimento;
+
+          // Enviar dados cinco vezes com valores diferentes
+          for (let i = 0; i < 5; i++) {
+              let idAtual = id + i + 1; // Incrementa o ID para cada iteração
+              let nomeAtual = minhaNome + `_${i+1}`; // Adiciona um sufixo ao nome
+              let movimentosAtual = parseInt(minhaMovimento) + i; // Incrementa os movimentos
+
+              // Redirecionar para a segunda página com os valores como parâmetros de consulta
+              window.location.href = "/table?nome=" + encodeURIComponent(nomeAtual) + "&movimentos=" + encodeURIComponent(movimentosAtual) + "&id=" + encodeURIComponent(idAtual);
+          }
+      }
+
 
     </script>
 

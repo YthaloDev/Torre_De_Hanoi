@@ -1,5 +1,5 @@
 #Aqui inportamos a biblioteca flask que ajuda-nos a trabalhar com web
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
